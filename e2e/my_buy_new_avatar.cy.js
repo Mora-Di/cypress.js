@@ -23,11 +23,13 @@ describe('Проверка покупки нового аватара', function
          cy.get('.card_csv').type('125');                             // вводим CVV карты
          cy.get('.card_date').type('1226');                           // вводим срок действия карты
          cy.get('.card_name').type('NAME');                           // вводим имя владельца действия карты
-         cy.get('.style_1_base_button_payment_body > .style_1_base_button_payment').click();    // нажимаем кнопку Оплатить
-
+         cy.wait(500);
+         
+         cy.get('#root > div > div > main > form > div > div.style_1_base_button_payment_body > button').click();     // нажимаем кнопку Оплатить
+         
          cy.get('.payment_header_content_title_h2').contains('Пикачунькофф'); // сравнение с текстом
          cy.get('.threeds_number').type('56456');     // вводим код подтверждения СМС
-         cy.get('.style_1_base_button_payment_body > .style_1_base_button_payment').click();    // нажимаем кнопку Оплатить
+         cy.get('#root > div > div > main > form > div > div.style_1_base_button_payment_body > button').click();    // нажимаем кнопку Оплатить
 
          cy.get('.payment_status_top_title').should('be.visible');     // проверяем видимость сообщения об успешной покупке
          cy.get('.payment_status_top_title').contains('Покупка прошла успешно'); // сравнение с текстом
