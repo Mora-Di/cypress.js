@@ -23,7 +23,7 @@ describe('Проверка покупки нового аватара', function
          cy.get('.card_csv').type('125');                             // вводим CVV карты
          cy.get('.card_date').type('1226');                           // вводим срок действия карты
          cy.get('.card_name').type('NAME');                           // вводим имя владельца действия карты
-         cy.get('.style_1_base_button_payment_body > .style_1_base_button_payment').click();                    // нажимаем кнопку Оплатить
+         cy.get('.style_1_base_button_payment_body > .style_1_base_button_payment').click();    // нажимаем кнопку Оплатить
 
          cy.get('.payment_header_content_title_h2').contains('Пикачунькофф'); // сравнение с текстом
          cy.get('.threeds_number').type('56456');     // вводим код подтверждения СМС
