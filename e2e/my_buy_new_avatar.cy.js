@@ -5,8 +5,8 @@ describe('Проверка покупки нового аватара', function
          cy.get('[href="https://id.vk.com/auth?uuid=GBFBV2654u2jhtrRTJS45jw6435454yyt3y4d2354&app_id=51935122&response_type=silent_token&redirect_uri=https://api.pokemonbattle.ru/v2/technical_routes/callback_vk"] > .auth_content_social_icon').should('be.visible'); // кнопка"ВК" виден пользователю
          cy.get('.footer_studio').should('be.visible');  // лого компании видно пользователю
 
-         cy.get('input[id="k_email"]').type('mora.dyan@yandex.ru');      // вводим логин
-         cy.get('input[id="k_password"]').type('Dia5180');               // вводим пароль
+         cy.get('input[id="k_email"]').type('USER_LOGIN');      // вводим логин
+         cy.get('input[id="k_password"]').type('USER_PASSWORD');               // вводим пароль
          cy.get('button[type="submit"]').click();                        // нажимаем кнопку Подтвердить
 
          cy.wait(500);
@@ -25,11 +25,11 @@ describe('Проверка покупки нового аватара', function
          cy.get('.card_name').type('NAME');                           // вводим имя владельца действия карты
          cy.wait(500);
          
-         cy.get('#root > div > div > main > form > div > div.style_1_base_button_payment_body > button').click();     // нажимаем кнопку Оплатить
+         cy.get('.style_1_base_button_payment_body button.style_1_base_button_payment:not(.disable)').click();    // нажимаем кнопку Оплатить
          
          cy.get('.payment_header_content_title_h2').contains('Пикачунькофф'); // сравнение с текстом
          cy.get('.threeds_number').type('56456');     // вводим код подтверждения СМС
-         cy.get('#root > div > div > main > form > div > div.style_1_base_button_payment_body > button').click();    // нажимаем кнопку Оплатить
+         cy.get('.style_1_base_button_payment_body button.style_1_base_button_payment:not(.disable)').click();    // нажимаем кнопку Оплатить
 
          cy.get('.payment_status_top_title').should('be.visible');     // проверяем видимость сообщения об успешной покупке
          cy.get('.payment_status_top_title').contains('Покупка прошла успешно'); // сравнение с текстом
